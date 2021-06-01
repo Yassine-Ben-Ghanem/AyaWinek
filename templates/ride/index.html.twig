@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ride index{% endblock %}
+
+{% block body %}
+    <h1>Ride index</h1>
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <img src="..." class="rounded me-2" alt="...">
+    <strong class="me-auto">Bootstrap</strong>
+    <small>11 mins ago</small>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
+</div>
+
+
+
+
+
+
+
+    <!-- <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pick_up_time</th>
+                <th>Pick_up_from</th>
+                <th>Drop_to</th>
+                <th>Type_ride</th>
+                <th>Amount</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ride in rides %}
+            <tr>
+                <td>{{ ride.id }}</td>
+                <td>{{ ride.pickUpTime ? ride.pickUpTime|date('Y-m-d') : '' }}</td>
+                <td>{{ ride.pickUpFrom }}</td>
+                <td>{{ ride.dropTo }}</td>
+                <td>{{ ride.typeRide }}</td>
+                <td>{{ ride.amount }}</td>
+                <td>
+                    <a href="{{ path('ride_show', {'id': ride.id}) }}">show</a>
+                    <a href="{{ path('ride_edit', {'id': ride.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+    <a href="{{ path('ride_new') }}">Create new</a>-->
+
+{% endblock %}
