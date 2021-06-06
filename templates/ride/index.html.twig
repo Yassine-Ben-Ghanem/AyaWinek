@@ -3,25 +3,47 @@
 {% block title %}Ride index{% endblock %}
 
 {% block body %}
-    <h1>Ride index</h1>
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-    <img src="..." class="rounded me-2" alt="...">
-    <strong class="me-auto">Bootstrap</strong>
-    <small>11 mins ago</small>
-    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-  </div>
-  <div class="toast-body">
-    Hello, world! This is a toast message.
-  </div>
-</div>
+
+{% for ride in rides %}
+        <div class="container">
+  <div class="row">
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">From {{ ride.pickUpFrom }} To {{ ride.dropTo }}</h5>
+                        <p class="card-text">
+                            <i class="bi bi-calendar-check">{{  ride.pickUpTime ? ride.pickUpTime|date('Y-m-d') : ''}}</i><br>
+                            <h3>Type de ride : {{ ride.typeRide }}</h3>
+                            <h3>Prix de ride : {{ ride.amount }} DT</h3>
+                            <h3>Type de ride : {{ ride.typeRide }}</h3>
+                        </p>
+                    <a href={{ path('ride_show', {'id': ride.id}) }} class="btn btn-primary">Read</a>
+                </div>
+            </div>
+        </div>  
+         </div>
+        </div>
+
+        {% endfor %}
 
 
+<!--{% for ride in rides %}
 
-
-
-
-
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+             <div class="col">
+                 <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">From {{ ride.pickUpFrom }} To {{ ride.dropTo }}</h5>
+                        <p class="card-text">
+                        This ride from From {{ ride.pickUpFrom }} to {{ ride.dropTo }} at {{  ride.pickUpTime ? ride.pickUpTime|date('Y-m-d') : ''}}.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+          {% endfor %}
+-->
     <!-- <table class="table">
         <thead>
             <tr>

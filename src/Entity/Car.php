@@ -32,11 +32,7 @@ class Car
      */
     private $number_places;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Driver::class, inversedBy="car", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $driver_id;
+   
 
     public function getId(): ?int
     {
@@ -79,15 +75,5 @@ class Car
         return $this;
     }
 
-    public function getDriverId(): ?Driver
-    {
-        return $this->driver_id;
-    }
-
-    public function setDriverId(Driver $driver_id): self
-    {
-        $this->driver_id = $driver_id;
-
-        return $this;
-    }
+    
 }

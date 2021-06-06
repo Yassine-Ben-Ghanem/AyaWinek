@@ -42,11 +42,7 @@ class Ride
      */
     private $amount;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Driver::class, inversedBy="rides")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $driver;
+    
 
     
 
@@ -118,17 +114,7 @@ class Ride
         return $this;
     }
 
-    public function getDriver(): ?Driver
-    {
-        return $this->driver;
-    }
-
-    public function setDriver(?Driver $driver): self
-    {
-        $this->driver = $driver;
-
-        return $this;
-    }
+   
 
     
 }

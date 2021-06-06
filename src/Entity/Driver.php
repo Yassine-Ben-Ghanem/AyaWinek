@@ -39,15 +39,9 @@ class Driver
      */
     private $account_email;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Car::class, mappedBy="driver_id", cascade={"persist", "remove"})
-     */
-    private $car;
+    
 
-    /**
-     * @ORM\OneToMany(targetEntity=Ride::class, mappedBy="driver")
-     */
-    private $rides;
+    
 
     public function __construct()
     {
@@ -109,50 +103,5 @@ class Driver
         return $this;
     }
 
-    public function getCar(): ?Car
-    {
-        return $this->car;
-    }
-
-    public function setCar(Car $car): self
-    {
-        // set the owning side of the relation if necessary
-        if ($car->getDriverId() !== $this) {
-            $car->setDriverId($this);
-        }
-
-        $this->car = $car;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Ride[]
-     */
-    public function getRides(): Collection
-    {
-        return $this->rides;
-    }
-
-    public function addRide(Ride $ride): self
-    {
-        if (!$this->rides->contains($ride)) {
-            $this->rides[] = $ride;
-            $ride->setDriver($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRide(Ride $ride): self
-    {
-        if ($this->rides->removeElement($ride)) {
-            // set the owning side to null (unless already changed)
-            if ($ride->getDriver() === $this) {
-                $ride->setDriver(null);
-            }
-        }
-
-        return $this;
-    }  
+  
 }
