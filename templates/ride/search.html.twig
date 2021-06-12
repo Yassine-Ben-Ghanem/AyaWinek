@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ride{% endblock %}
+
+{% block body %}
+    <h1>search Ride</h1>
+
+   <br><br><br><br><br>    
+<header class="w3-display-container w3-content" style="max-width:1500px;">
+  <img class="w3-image" src="https://images.pexels.com/photos/5721492/pexels-photo-5721492.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="The Hotel" style="min-width:1000px" width="1500" height="800">
+  <div class="w3-display-left w3-padding w3-col l6 m8">
+    <div class="w3-container w3-black">
+      <h2><i class="fa fa-bus w3-margin-right"></i>Search Ride</h2>
+    </div>
+    <div class="w3-container w3-white w3-padding-16">
+      <form action="/action_page.php" target="_blank">
+      {{ form_start(form) }}
+        <div class="w3-row-padding" style="margin:0 -16px;">
+          <div class="w3-half w3-margin-bottom">
+            <label><i class="fa fa-calendar-o"></i> Pick up from</label>
+            {{ form_row(form.pick_up_from) }}
+            {# <input class="w3-input w3-border" type="text" placeholder="type your locations" name="CheckIn" required> #}
+          </div>
+          <div class="w3-half">
+            <label><i class="fa fa-calendar-o"></i> Drop to</label>
+            {{ form_row(form.drop_to) }}
+            {# <input class="w3-input w3-border" type="text" placeholder="drop to" name="CheckOut" required> #}
+          </div>
+        </div>
+        <div class="w3-row-padding" style="margin:8px -16px;">
+          <div class="w3-half w3-margin-bottom">
+            <label><i class="fa fa-male"></i> pick up time</label>
+            {{ form_row(form.date_ride) }}
+            {# <input class="w3-input w3-border" type="date" value="1" name="Adults" min="1" max="6"> #}
+          </div>
+          <div class="w3-half">
+            <label><i class="fa fa-child"></i> Adults</label>
+            {{ form_row(form.Number_adulte) }}
+          {# <input class="w3-input w3-border" type="number" value="0" name="Kids" min="0" max="6"> #}
+          </div>
+        </div>
+        <button class="w3-button w3-dark-grey" type="submit"><i class="fa fa-search w3-margin-right"></i> Search availability</button>
+      </form>
+      {{ form_end(form) }}
+    </div>
+  </div>
+</header>
+    <a href="{{ path('ride_index') }}">back to list</a>
+
+    {% endblock %}

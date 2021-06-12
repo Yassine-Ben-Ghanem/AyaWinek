@@ -4,11 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Ride;
 use App\Form\RideType;
+use App\Form\SearchType;
 use App\Repository\RideRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/ride")
@@ -90,5 +91,34 @@ class RideController extends AbstractController
         }
 
         return $this->redirectToRoute('ride_index');
+    }
+
+
+      /**
+     * @Route("/search/s", name="ride_search")
+     */
+    public function search(Request $request): Response
+    {
+        //dd('ici');
+        $form = $this->createForm(SearchType::class);
+        
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            $task = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            // $entityManager = $this->getDoctrine()->getManager();
+            // $entityManager->persist($task);
+            // $entityManager->flush();
+
+            // return $this->redirectToRoute('task_success');
+        }
+
+        return $this->render('ride/search.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }
