@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Ride;
+use App\Entity\Driver;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RideType extends AbstractType
@@ -17,6 +19,11 @@ class RideType extends AbstractType
             ->add('drop_to')
             ->add('type_ride')
             ->add('amount')
+            ->add('driver',EntityType::class,[
+                'class' => Driver::class,
+
+                'choice_label' => 'first_mame',
+            ])
         ;
     }
 

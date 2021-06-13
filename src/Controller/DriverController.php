@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/driver")
@@ -27,6 +28,7 @@ class DriverController extends AbstractController
 
     /**
      * @Route("/new", name="driver_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +52,7 @@ class DriverController extends AbstractController
 
     /**
      * @Route("/{id}", name="driver_show", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function show(Driver $driver): Response
     {
@@ -60,6 +63,7 @@ class DriverController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="driver_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Driver $driver): Response
     {
@@ -80,6 +84,7 @@ class DriverController extends AbstractController
 
     /**
      * @Route("/{id}", name="driver_delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Driver $driver): Response
     {

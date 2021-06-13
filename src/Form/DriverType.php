@@ -16,7 +16,6 @@ class DriverType extends AbstractType
             ->add('last_name')
             ->add('number_tel')
             ->add('account_email')
-            ->add('car')
         ;
     }
 

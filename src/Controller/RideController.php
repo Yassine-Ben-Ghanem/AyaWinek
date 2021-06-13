@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/ride")
@@ -18,6 +19,7 @@ class RideController extends AbstractController
 {
     /**
      * @Route("/", name="ride_index", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
     public function index(RideRepository $rideRepository): Response
     {
@@ -28,6 +30,7 @@ class RideController extends AbstractController
 
     /**
      * @Route("/new", name="ride_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -51,6 +54,7 @@ class RideController extends AbstractController
 
     /**
      * @Route("/{id}", name="ride_show", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
     public function show(Ride $ride): Response
     {
@@ -61,6 +65,7 @@ class RideController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="ride_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Ride $ride): Response
     {
@@ -81,6 +86,7 @@ class RideController extends AbstractController
 
     /**
      * @Route("/{id}", name="ride_delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Ride $ride): Response
     {
@@ -96,6 +102,7 @@ class RideController extends AbstractController
 
       /**
      * @Route("/search/s", name="ride_search")
+     * @IsGranted("ROLE_USER")
      */
     public function search(Request $request): Response
     {
@@ -108,6 +115,7 @@ class RideController extends AbstractController
             // but, the original `$task` variable has also been updated
             $task = $form->getData();
 
+            
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
             // $entityManager = $this->getDoctrine()->getManager();

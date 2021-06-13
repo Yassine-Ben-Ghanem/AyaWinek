@@ -6,6 +6,7 @@ use App\Repository\DriverRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=DriverRepository::class)
@@ -38,6 +39,11 @@ class Driver
      * @ORM\Column(type="string", length=255)
      */
     private $account_email;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Ride::class, mappedBy="Driver", orphanRemoval=true)
+     */
+    private $rides;
 
     
 
@@ -99,6 +105,36 @@ class Driver
     public function setAccountEmail(string $account_email): self
     {
         $this->account_email = $account_email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ride[]
+     */
+    public function getRides(): Collection
+    {
+        return $this->rides;
+    }
+
+    public function addRide(Ride $ride): self
+    {
+        if (!$this->rides->contains($ride)) {
+            $this->rides[] = $ride;
+            $ride->setDriver($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRide(Ride $ride): self
+    {
+        if ($this->rides->removeElement($ride)) {
+            // set the owning side to null (unless already changed)
+            if ($ride->getDriver() === $this) {
+                $ride->setDriver(null);
+            }
+        }
 
         return $this;
     }

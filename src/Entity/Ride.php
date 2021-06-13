@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\RideRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=RideRepository::class)
@@ -39,8 +40,18 @@ class Ride
 
     /**
      * @ORM\Column(type="float")
+     *  @Assert\Range(
+     *      min = 0,
+     *      notInRangeMessage = "le prix doit etre positif!! ",
+     * )
      */
     private $amount;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Driver::class, inversedBy="rides")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Driver;
 
     
 
@@ -110,6 +121,18 @@ class Ride
     public function setAmount(float $amount): self
     {
         $this->amount = $amount;
+
+        return $this;
+    }
+
+    public function getDriver(): ?Driver
+    {
+        return $this->Driver;
+    }
+
+    public function setDriver(?Driver $Driver): self
+    {
+        $this->Driver = $Driver;
 
         return $this;
     }
