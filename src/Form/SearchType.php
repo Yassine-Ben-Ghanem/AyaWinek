@@ -30,7 +30,8 @@ class SearchType extends AbstractType
                         'Gassrine' => 'Gassrine',
                         'Zaghwen' => 'Zaghwen',
                         'ben guerdan' => 'ben guerdan',
-                        'Gafsa' => 'Gafsa',],
+                        'Gafsa' => 'Gafsa',
+                        'Sousse' => 'Sousse',],
                     'mapped' => false]) 
             ->add('drop_to', ChoiceType::class, [
                         'choices'  => [
@@ -45,7 +46,7 @@ class SearchType extends AbstractType
                         'Zaghwen' => 'Zaghwen',
                         'ben guerdan' => 'ben guerdan',
                         'Gafsa' => 'Gafsa', 
-
+                        'Sousse' => 'Sousse',
                         ],'mapped' => false])   
             ->add('Number_adulte',NumberType::class,['mapped' => false])
         ;

@@ -113,20 +113,34 @@ class RideController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
-            $task = $form->getData();
+            // $task = $form->getData();
+            $pick_up_from = $form->get('pick_up_from')->getData();
+            $drop_to = $form->get('drop_to')->getData();
 
+            $rides = $this->getDoctrine()->getRepository(Ride::class)->findByLocation($pick_up_from,$drop_to);
             
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
             // $entityManager = $this->getDoctrine()->getManager();
             // $entityManager->persist($task);
             // $entityManager->flush();
-
-            // return $this->redirectToRoute('task_success');
+           
+             return $this->render('ride/listAfterSearch.html.twig', [
+                 'aaa' => $rides
+            ]);
         }
 
         return $this->render('ride/search.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/searchres/rs", name="after_search", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function afetrsaerch(RideRepository $rideRepository): Response
+    {
+        return $this->render('ride/listAfterSearch.html.twig');
     }
 }

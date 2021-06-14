@@ -14,9 +14,10 @@
                     <h5 class="card-title">From {{ ride.pickUpFrom }} To {{ ride.dropTo }}</h5>
                         <p class="card-text">
                             <i class="bi bi-calendar-check">{{  ride.pickUpTime ? ride.pickUpTime|date('Y-m-d') : ''}}</i><br>
-                            <h3>Type de ride : {{ ride.typeRide }}</h3>
+                            <h3>name of driver : {{ ride.driver.getLastName() }}</h3>
                             <h3>Prix de ride : {{ ride.amount }} DT</h3>
                             <h3>Type de ride : {{ ride.typeRide }}</h3>
+                            <h3>Number of telphone : {{ride.driver.getNumbertel()}}</h3>
                         </p>
                     <a href={{ path('ride_show', {'id': ride.id}) }} class="btn btn-primary">Details</a>
                 </div>
