@@ -5,7 +5,46 @@
 {% block body %}
     <h1>Create new Ride</h1>
 
-    {{ include('ride/_form.html.twig') }}
+        <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <div class="container" >
+          <div class="col-lg-6">
+           <div class="php-email">
+            {{ form_start(form) }}
+              <div class="row">
+                <div class="col-md-6 form-group">
+                {{ form_row(form.pick_up_from) }}
+                  {# <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required> #}
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                 {{ form_row(form.drop_to) }} 
+                  {# <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required> #}
+                </div>
+              </div>
+              <div class="form-group mt-3">
+              {{ form_row(form.pick_up_time) }} 
+                {# <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required> #}
+              </div>
+              <div class="form-group mt-3">
+              {{ form_row(form.type_ride) }} 
+                {# <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required> #}
+              </div>
+              <div class="form-group mt-3">
+              {{ form_row(form.amount) }}  
+                {# <input type="text" class="form-control"name="subject" id="subject" placeholder="Subject" required> #}
+              </div>
+              <div class="form-group mt-3">
+              {{ form_row(form.driver) }} 
+                {# <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required> #}
+              </div>
+            <br><br>
+              
+               <button class="btn btn-primary" type="submit">Add</button>
+                {{ form_end(form) }}
+      </div>
+        </div>
+
+      
+    </section><!-- End Contact Section -->
 
     <a href="{{ path('ride_index') }}">back to list</a>
 {% endblock %}

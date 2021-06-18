@@ -5,20 +5,21 @@
 {% block body %}
     <h1>Driver index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>First_mame</th>
-                <th>Last_name</th>
-                <th>Number_tel</th>
-                <th>Account_email</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <table style=" border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th>Header Cell</th>
+      <th>Header Cell</th>
+      <th>Header Cell</th>
+      <th>Header Cell</th>
+      <th>Header Cell</th>
+    </tr>
+  </thead>
+        <tbody font: 110%/1.4 system-ui;
+  margin: 0;
+  padding: 10rem 2rem 50rem;>
         {% for driver in drivers %}
-            <tr>
+            {# <tr>
                 <td>{{ driver.id }}</td>
                 <td>{{ driver.firstMame }}</td>
                 <td>{{ driver.lastName }}</td>
@@ -28,7 +29,14 @@
                     <a href="{{ path('driver_show', {'id': driver.id}) }}">show</a>
                     <a href="{{ path('driver_edit', {'id': driver.id}) }}">edit</a>
                 </td>
-            </tr>
+            </tr> #}
+             <tr>
+      <td style=" padding: 1rem;">{{ driver.id }}</td>
+      <td style=" padding: 1rem;">{{ driver.firstMame }}</td>
+      <td style=" padding: 1rem;"> {{ driver.lastName }}</td>
+      <td style=" padding: 1rem;">C{{ driver.numberTel }}</td>
+      <td style=" padding: 1rem;">{{ driver.accountEmail }}</td>
+    </tr>
         {% else %}
             <tr>
                 <td colspan="6">no records found</td>

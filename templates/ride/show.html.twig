@@ -1,35 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Ride{% endblock %}
-
+        {# <tr>
+      <td style=" padding: 1rem;">{{ driver.id }}</td>
+      <td style=" padding: 1rem;">{{ driver.firstMame }}</td>
+      <td style=" padding: 1rem;"> {{ driver.lastName }}</td>
+      <td style=" padding: 1rem;">C{{ driver.numberTel }}</td>
+      <td style=" padding: 1rem;">{{ driver.accountEmail }}</td>
+    </tr> #}
 {% block body %}
-    <h1>Ride</h1>
 
     <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ ride.id }}</td>
+        <tbody style=" font: 110%/1.4 system-ui;
+  margin: 0;
+  padding: 10rem 2rem 50rem;" >
+            <tr>    
+                <th   padding: 1rem;>Id</th>
+                <td style=" padding: 1rem;">{{ ride.id }}</td>
             </tr>
             <tr>
-                <th>Pick_up_time</th>
-                <td>{{ ride.pickUpTime ? ride.pickUpTime|date('Y-m-d') : '' }}</td>
+                <th   padding: 1rem;>Pick_up_time</th>
+                <td style=" padding: 1rem;">{{ ride.pickUpTime ? ride.pickUpTime|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Pick_up_from</th>
-                <td>{{ ride.pickUpFrom }}</td>
+                <th   padding: 1rem;>Pick_up_from</th>
+                <td style=" padding: 1rem;">{{ ride.pickUpFrom }}</td>
             </tr>
             <tr>
-                <th>Drop_to</th>
-                <td>{{ ride.dropTo }}</td>
+                <th   padding: 1rem;>Drop_to</th>
+                <td style=" padding: 1rem;">{{ ride.dropTo }}</td>
             </tr>
             <tr>
-                <th>Type_ride</th>
-                <td>{{ ride.typeRide }}</td>
+                <th  padding: 1rem;>Type_ride</th>
+                <td style=" padding: 1rem;">{{ ride.typeRide }}</td>
             </tr>
             <tr>
-                <th>Amount</th>
-                <td>{{ ride.amount }}</td>
+                <th  style= "padding: 1rem;">Amount</th>
+                <td style=" padding: 1rem;">{{ ride.amount }}</td>
             </tr>
         </tbody>
     </table>

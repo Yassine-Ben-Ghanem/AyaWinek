@@ -4,29 +4,27 @@
 
 {% block body %}
 
- {% for ride in aaa %}
-        <div class="container">
-  <div class="row">
+        {% for ride in aaa %}
+<section class="services">
+      <div class="container">
 
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">From {{ ride.pickUpFrom }} To {{ ride.dropTo }}</h5>
-                        <p class="card-text">
-                            <i class="bi bi-calendar-check">{{  ride.pickUpTime ? ride.pickUpTime|date('Y-m-d') : ''}}</i><br>
-                            <h3>name of driver : {{ ride.driver.getLastName() }}</h3>
-                            <h3>Prix de ride : {{ ride.amount }} DT</h3>
-                            <h3>Type de ride : {{ ride.typeRide }}</h3>
-                            <h3>Number of telphone : {{ride.driver.getNumbertel()}}</h3>
-                        </p>
-                    <a href={{ path('ride_show', {'id': ride.id}) }} class="btn btn-primary">Details</a>
-                </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="icon-box icon-box-pink">
+              {# <div class="icon"><i class="bx bxl-dribbble"></i></div> #}
+              <h4 class="title"><a href="">From {{ ride.pickUpFrom }} To {{ ride.dropTo }}</a></h4>
+              <p class="description">
+              name of driver : {{ ride.driver.getLastName() }}<br>
+              Prix de ride : {{ ride.amount }} DT<br>
+              Type de ride : {{ ride.typeRide }}<br>
+              Number of telphone : {{ride.driver.getNumbertel()}}
+              </p>
+                    <a href={{ path('ride_show', {'id': ride.id}) }} class="btn btn-primary">Details</a>       
             </div>
-        </div>  
-         </div>
-        </div>
-
-        {% endfor %} 
+          </div>
+      </div>
+</section>    
+{% endfor %}
 
 
 

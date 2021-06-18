@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class RideType extends AbstractType
 {
@@ -17,7 +18,12 @@ class RideType extends AbstractType
             ->add('pick_up_time')
             ->add('pick_up_from')
             ->add('drop_to')
-            ->add('type_ride')
+            ->add('type_ride',ChoiceType::class,[
+                'choices'  => [
+                'Standard' => 'Standard',
+                'High' => 'High',
+                ],
+            ])
             ->add('amount')
             ->add('driver',EntityType::class,[
                 'class' => Driver::class,
