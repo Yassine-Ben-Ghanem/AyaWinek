@@ -1,34 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Ride index{% endblock %}
+   {% block nav %}
+{% if  is_granted('ROLE_ADMIN')%}
+  
+              <li><a href="{{path('ride_new')}}">Add Ride</a></li>
+              <li><a href="{{path('user')}}">users</a></li>
+   
+            {% endif %}
 
+            <li><a href="{{path('app_logout')}}">LogOut</a></li>
+ {% endblock %} 
 {% block body %}
 
 
-        {# <div class="container">
-  <div class="row">
-
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">From {{ ride.pickUpFrom }} To {{ ride.dropTo }}</h5>
-                        <p class="card-text">
-                            <i class="bi bi-calendar-check">{{  ride.pickUpTime ? ride.pickUpTime|date('Y-m-d') : ''}}</i><br>
-                            <h3>name of driver : {{ ride.driver.getLastName() }}</h3>
-                            <h3>Prix de ride : {{ ride.amount }} DT</h3>
-                            <h3>Type de ride : {{ ride.typeRide }}</h3>
-                            <h3>Number of telphone : {{ride.driver.getNumbertel()}}</h3>
-                        </p>
-                    <a href={{ path('ride_show', {'id': ride.id}) }} class="btn btn-primary">Details</a>
-                </div>
-            </div>
-        </div>  
-         </div>
-        </div> #}
+   
 
         {% for ride in rides %}
 <section class="services">
-      <div class="container">
+      <div class="container"> 
 
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
@@ -41,61 +31,19 @@
               Type de ride : {{ ride.typeRide }}<br>
               Number of telphone : {{ride.driver.getNumbertel()}}
               </p>
-                    <a href={{ path('ride_show', {'id': ride.id}) }} class="btn btn-primary">Details</a>       
+                    <a href={{ path('ride_show', {'id': ride.id}) }} class="btn btn-primary">Details</a>   
+                     
+{% if  is_granted('ROLE_ADMIN')%}
+  
+      <a href="{{ path('ride_edit', {'id': ride.id}) }}" class="btn btn-danger">edit</a>
+       <div class="btn btn-danger">{{ include('ride/_delete_form.html.twig') }}</div>
+   
+{% endif %} 
             </div>
-          </div>
+           </div>
       </div>
 </section>    
 {% endfor %}
-<!--{% for ride in rides %}
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-             <div class="col">
-                 <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">From {{ ride.pickUpFrom }} To {{ ride.dropTo }}</h5>
-                        <p class="card-text">
-                        This ride from From {{ ride.pickUpFrom }} to {{ ride.dropTo }} at {{  ride.pickUpTime ? ride.pickUpTime|date('Y-m-d') : ''}}.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-          {% endfor %}
--->
-    <!-- <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Pick_up_time</th>
-                <th>Pick_up_from</th>
-                <th>Drop_to</th>
-                <th>Type_ride</th>
-                <th>Amount</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for ride in rides %}
-            <tr>
-                <td>{{ ride.id }}</td>
-                <td>{{ ride.pickUpTime ? ride.pickUpTime|date('Y-m-d') : '' }}</td>
-                <td>{{ ride.pickUpFrom }}</td>
-                <td>{{ ride.dropTo }}</td>
-                <td>{{ ride.typeRide }}</td>
-                <td>{{ ride.amount }}</td>
-                <td>
-                    <a href="{{ path('ride_show', {'id': ride.id}) }}">show</a>
-                    <a href="{{ path('ride_edit', {'id': ride.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table> 
-    <a href="{{ path('ride_new') }}">Create new</a>-->
 
 {% endblock %}

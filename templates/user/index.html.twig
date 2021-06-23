@@ -1,15 +1,21 @@
 {% extends 'base.html.twig' %}
+   {% block nav %}
+{% if  is_granted('ROLE_ADMIN')%}
+  
+              <li><a href="{{path('ride_new')}}">Add Ride</a></li>
+              <li><a href="{{path('user')}}">users</a></li>
+   
+            {% endif %}
 
-{% block title %}Driver index{% endblock %}
-
+            <li><a href="{{path('app_logout')}}">LogOut</a></li>
+ {% endblock %} 
 {% block body %}
-
     <table style=" border-collapse: collapse;">
   
         <tbody font: 110%/1.4 system-ui;
   margin: 0;
   padding: 10rem 2rem 50rem;>
-        {% for driver in drivers %}
+        {% for user in users %}
             {# <tr>
                 <td>{{ driver.id }}</td>
                 <td>{{ driver.firstMame }}</td>
@@ -22,11 +28,11 @@
                 </td>
             </tr> #}
              <tr>
-      <td style=" padding: 1rem;">{{ driver.id }}</td>
-      <td style=" padding: 1rem;">{{ driver.firstMame }}</td>
-      <td style=" padding: 1rem;"> {{ driver.lastName }}</td>
-      <td style=" padding: 1rem;">C{{ driver.numberTel }}</td>
-      <td style=" padding: 1rem;">{{ driver.accountEmail }}</td>
+      <td style=" padding: 1rem;">{{ user.id }}</td>
+      <td style=" padding: 1rem;">{{ user.getFirstName }}</td>
+      <td style=" padding: 1rem;"> {{ user.getLastName }}</td>
+      {# <td style=" padding: 1rem;">C{{ user.getRoles() }}</td> #}
+      <td style=" padding: 1rem;">{{ user.email }}</td>
     </tr>
         {% else %}
             <tr>
@@ -36,5 +42,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('driver_new') }}">Create new</a>
+    
 {% endblock %}

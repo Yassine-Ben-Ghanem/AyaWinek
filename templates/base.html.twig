@@ -1,7 +1,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+{# {% if is_granted('ROLE_ADMIN') %}
+    <a href="...">Delete</a>
+{% endif %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <p>Email: {{ app.user.email }}</p>
+{% endif %}
+ #}
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -51,11 +57,20 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active " href="{{path('home')}}">Home</a></li>
+          <li><a class="active" href="{{path('home')}}">Home</a></li>
           <li><a href="{{path('ride_index')}}">Rides</a></li>
-          <li><a href="{{path('ride_new')}}">Add Ride</a></li>
           <li><a href="{{path('ride_search')}}">Search</a></li>
+          {% block nav %}
           
+            {% if  is_granted('ROLE_USER')%}
+  
+              <li><a href="{{path('app_logout')}}">LogOut</a></li>
+              
+   
+            {% endif %}
+          {% endblock %}
+        </ul>
+
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
@@ -67,7 +82,12 @@
     <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
       <div class="carousel-item active">
         <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Welcome to <span>AyaWinek</span></h2>
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+              <h2 class="animate__animated animate__fadeInDown">{{ app.user.getLastName()}}</h2>
+
+{% endif %}
+          <h2 class="animate__animated animate__fadeInDown">Welcome To <span>Aya Winek</span></h2>
+          <h4 style="color:white">There’s more to love in the ride </h4>
         </div>
       </div>
     </div>
@@ -117,17 +137,17 @@
             <h4>Contact Us</h4>
             <p>
               A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Soisse, NY 535022<br>
+               Tunisie <br><br>
+              <strong>Phone:</strong> +216 72 123 456<br>
+              <strong>Email:</strong> Contact@AyaWinek.com<br>
             </p>
 
           </div>
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <h3>About Moderna</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+            <h3>About Aya Winek</h3>
+            <p>Good things happen when people can move, whether across town or toward their dreams. Opportunities appear, open up, become reality. What started as a way to tap a button to get a ride has led to billions of moments of human connection as people around the world go all kinds of places in all kinds of ways with the help of our technology.</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -137,19 +157,6 @@
           </div>
 
         </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Moderna</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
   </footer><!-- End Footer -->

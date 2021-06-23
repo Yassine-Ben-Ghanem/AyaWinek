@@ -1,7 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New Ride{% endblock %}
+   {% block nav %}
+{% if  is_granted('ROLE_ADMIN')%}
+  
+              <li><a href="{{path('ride_new')}}">Add Ride</a></li>
+              <li><a href="{{path('user')}}">users</a></li>
+   
+            {% endif %}<li><a href="{{path('app_logout')}}">LogOut</a></li>
 
+ {% endblock %} 
 {% block body %}
     <h1>Create new Ride</h1>
 

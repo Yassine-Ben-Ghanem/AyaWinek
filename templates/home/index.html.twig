@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}AyaWinek{% endblock %}
+   {% block nav %}
+{% if  is_granted('ROLE_ADMIN')%}
+  
+              <li><a href="{{path('ride_new')}}">Add Ride</a></li>
+              <li><a href="{{path('user')}}">users</a></li>
+   
+            {% endif %}
+ {% endblock %} 
+ 
 {% block body %}
   <main id="main">
 
@@ -12,32 +21,33 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
             <div class="icon-box icon-box-pink">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <h4 class="title"><a href="">Practice</a></h4>
+              <p class="description">Quickly find a nearby carpool from millions of available rides.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box icon-box-cyan">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+              <h4 class="title"><a href="">Easy</a></h4>
+              <p class="description">Find the perfect trip! Simply enter your exact address, choose the trip that suits you best, and book.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-green">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              <h4 class="title"><a href="">Direct</a></h4>
+              <p class="description">Whether you plan ahead or book at the last minute, you will always find a great rate.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-blue">
               <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+              <h4 class="title"><a href="">Having the choice</a></h4>
+              <p class="description">
+The advantage of roads? They go everywhere! Literally. Enjoy thousands of destinations.</p>
             </div>
           </div>
 
@@ -53,8 +63,8 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Features</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>About Aya Winwk</h2>
+          <p>Aya winek is a trusted community that connects drivers who have available seats with passengers who want to make the same trip</p>
         </div>
 
         <div class="row" data-aos="fade-up">
@@ -62,15 +72,15 @@
             <img src="assets/img/features-1.svg" class="img-fluid" alt="">
           </div>
           <div class="col-md-7 pt-4">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3>Additional protection for our drivers</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+             What if, for only 2 TD, you gave yourself extra peace of mind for your next trip in Aya Winek? With our partner AXA, you can benefit from :
+Reimbursement of your deductible up to 1 500 TD;
+And soon, for the same price, you can also benefit from :
+The coverage of the towing of your vehicle in case of breakdown or accident during an Aya Winek trip;
+Guaranteed arrival at your destination for you and all passengers in the vehicle;
+As a driver, you don't pay anything out of your own pocket: the 2€ will simply be deducted from the total amount that you should receive for your Aya Winek trip.
             </p>
-            <ul>
-              <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-            </ul>
           </div>
         </div>
 
@@ -79,15 +89,16 @@
             <img src="assets/img/features-2.svg" class="img-fluid" alt="">
           </div>
           <div class="col-md-7 pt-5 order-2 order-md-1">
-            <h3>Corporis temporibus maiores provident</h3>
+            <h3>How does carpooling work?</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+             Simply indicate where you are going, when you are leaving and where you would like to pick up and drop off passengers.
+
+Choose from our list of favorite places to pick up and drop off passengers. It's more convenient for everyone!
             </p>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+          When a passenger books your ride, we give you their number in case you need to contact them.
+
+You can check the information related to your trip and your passengers at any time, from your listing.
             </p>
           </div>
         </div>
@@ -97,13 +108,14 @@
             <img src="assets/img/features-3.svg" class="img-fluid" alt="">
           </div>
           <div class="col-md-7 pt-5">
-            <h3>Sunt consequatur ad ut est nulla consectetur reiciendis animi voluptas</h3>
-            <p>Cupiditate placeat cupiditate placeat est ipsam culpa. Delectus quia minima quod. Sunt saepe odit aut quia voluptatem hic voluptas dolor doloremque.</p>
-            <ul>
-              <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check"></i> Facilis ut et voluptatem aperiam. Autem soluta ad fugiat.</li>
-            </ul>
+            <h3>How to trust other members?</h3>
+            <p>Trust is one of the pillars of the Aya Winek community. Thus, each member is invited to add his photo, write his minibio and leave reviews to help you get to know him better before traveling together.
+
+Will my passenger be on time? Is the driver safe? Reviews left with community members can answer these questions before you even meet them.
+
+On our side, we take care of checking that the email addresses and phone numbers are valid.
+          </p>
+            
           </div>
         </div>
 
@@ -112,16 +124,17 @@
             <img src="assets/img/features-4.svg" class="img-fluid" alt="">
           </div>
           <div class="col-md-7 pt-5 order-2 order-md-1">
-            <h3>Quas et necessitatibus eaque impedit ipsum animi consequatur incidunt in</h3>
+            <h3>Information on the coronavirus epidemic (COVID-19)</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+             We are closely monitoring the health situation in order to take the necessary measures as it evolves.
+
+In order to ensure that all carpoolers arrive safely at their destination, we ask that you follow the following recommendations:
             </p>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
+Respect the barrier gestures and the wearing of masks.
+Do not shake hands with anyone and wash your hands before and after the trip.
+Ventilate the vehicle regularly during the trip.
+If you feel unwell, have been in contact with people who are ill or are at risk, cancel your trip or travel alone.            </p>
           </div>
         </div>
 
